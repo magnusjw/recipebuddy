@@ -19,7 +19,7 @@ class WishList
     }
     public function add(Wish $wish)
     {
-        array_push($this->wishes,wish);    
+        array_push($this->wishes,$wish);    
     }
 
 }
