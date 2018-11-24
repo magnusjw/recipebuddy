@@ -1,5 +1,5 @@
 <?php
-
+include 'Wish.php'
 /**
  * Created by PhpStorm.
  * Date: 11/11/2018
@@ -7,16 +7,19 @@
  */
 class WishList
 {
-    private $wishs = [];
+    private $wishes = [];
 
     /**
      * WishList constructor.
      * @param array $wishs
      */
-    public function __construct(array $wishs)
+    public function __construct(array $wishes)
     {
-        $this->wishs = $wishs;
+        $this->wishes = $wishes;
     }
-
+    public function add(Wish $wish)
+    {
+        array_push($this->wishes,wish);    
+    }
 
 }
