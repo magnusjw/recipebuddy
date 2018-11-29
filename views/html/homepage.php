@@ -7,5 +7,5 @@
 include_once "headband.html";
 ?>
 <body>
-
+    <h1>Welcome on homepage</h1>
 </body>

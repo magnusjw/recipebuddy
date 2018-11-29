@@ -5,7 +5,8 @@
  * Date: 18/11/2018
  * Time: 16:34
  */
- 
+include_once "headband.html";
+?>
  <section>
 	<input type="radio" name="controls" id="start">
 	<input type="radio" name="controls" id="stop">
