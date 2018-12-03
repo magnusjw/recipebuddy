@@ -29,19 +29,39 @@ include_once "headband.html";
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <h4 class="modal-title">Add a new ingredient</h4>
                 </div>
-                <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                <form action="index?action=pantry" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="ingredientName">Ingredient's Name : </label>
+                            <input type="text" class="form-control" id="ingredientName" name="ingredientName" placeholder="Enter name">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Select a category</label>
+                            <select class="form-control" id="category" name="category">
+                                <option>Meat</option>
+                                <option>Vegetable</option>
+                                <option>Fruit</option>
+                                <option>Egg</option>
+                                <option>Milk</option>
+                                <option>Fat</option>
+                                <option>Sugar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fileToUpload">Select a picture</label>
+                            <input type="file" class="form-control-file" id="fileToUpload" name="fileToUpload" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default" name="add_ingredient">Add</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
             </div>
 
         </div>

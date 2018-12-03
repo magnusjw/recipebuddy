@@ -5,6 +5,7 @@
  * Time: 14:19
  */
 if (isset($_GET['action'])) {
+    require_once('database/Database_Gateway.php');
     if ($_GET['action'] == 'homepage') {
         require_once('controllers/HomePageController.php');
     }
