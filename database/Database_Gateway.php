@@ -37,7 +37,7 @@ class Database_Gateway
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        echo "Connected successfully";
+        //echo "Connected successfully";
 
         return $conn;
     }
@@ -63,4 +63,66 @@ class Database_Gateway
         mysqli_query($conn, $query);
         $conn->close();
     }
+
+    public function getPantry($userId){
+        $conn = self::dbConnection();
+        $query = sprintf("SELECT * FROM pantry,ingredient,picture WHERE pantry.idUser = %s AND ingredient.idPicture = picture.id AND pantry.idIngredient = ingredient.id;",$userId);
+        $results = mysqli_query($conn, $query);
+        $conn->close();
+        return $results;
+    }
+
+    public function updatePantry($userId,$arrayIngredient,$arrayQuantity){
+        $conn = self::dbConnection();
+        for ($i = 0; $i < count($arrayIngredient); $i++) {
+            if($arrayQuantity[$i] > 0){
+                $query = sprintf("UPDATE pantry SET quantity= %s WHERE idUser = %s AND idIngredient = %s;",$arrayQuantity[$i],$userId,$arrayIngredient[$i]);
+            }
+            else{
+                $query = sprintf("DELETE FROM pantry WHERE idUser = %s AND idIngredient = %s;",$userId,$arrayIngredient[$i]);
+            }
+            mysqli_query($conn, $query);
+        }
+        $conn->close();
+    }
+
+    public function searchIngredient($ingredient){
+        $conn = self::dbConnection();
+        // Prepare a select statement
+        $sql = "SELECT * FROM ingredient WHERE LOWER(name) LIKE LOWER(?)";
+
+        if($stmt = mysqli_prepare($conn, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $ingredient);
+
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                $result = mysqli_stmt_get_result($stmt);
+
+                // Check number of rows in the result set
+                if(mysqli_num_rows($result) > 0){
+                    // Fetch result rows as an associative array
+                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                        echo "<p>" . $row["name"] . "</p>";
+                    }
+                } else{
+                    echo "<p>No matches found</p>";
+                }
+            } else{
+                echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+            }
+        }
+
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+
+    public function getIngredientByName($name){
+        $conn = self::dbConnection();
+        $query = sprintf('SELECT ingredient.id AS id,ingredient.name AS name, picture.path AS path FROM ingredient,picture WHERE LOWER(ingredient.name) = LOWER("%s") AND ingredient.idPicture = picture.id;',$name);
+        $results = mysqli_query($conn, $query);
+        $conn->close();
+        return $results;
+    }
+
 }

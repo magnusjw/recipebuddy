@@ -13,6 +13,7 @@ if (isset($_GET['action'])) {
         require_once ('controllers/CreateRecipeController.php');
     }
     elseif ($_GET['action'] == 'pantry') {
+        require_once ('models/Ingredient.php');
         require_once ('controllers/PantryController.php');
     }
     elseif ($_GET['action'] == 'shopping_list') {
