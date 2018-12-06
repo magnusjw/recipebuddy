@@ -103,7 +103,7 @@ var jsalarm={
 <div id="jsalarmclock">
 <div><div class="leftcolumn">Current Time:</div> <span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>
 <div><div class="leftcolumn">Set Alarm:</div> <span><select></select> Hour</span> <span><select></select> Minutes</span> <span><select></select> Seconds</span></div>
-<div><div class="leftcolumn">Set Alarm Action:</div> <input type="text" id="musicloc" size="55" value="http://www.youtube.com/watch?v=v1zY_tV5kaQ" /> <span style="font: normal 11px Tahoma">*Location of page to launch</span></div>
+<div><div class="leftcolumn">Set Alarm Action:</div> <input type="text" id="musicloc" size="55" value="https://youtu.be/iNpXCzaWW1s" /> <span style="font: normal 11px Tahoma">*Location of page to launch</span></div>
 <input type="submit" value="Set Alarm!" id="submitbutton" /> <input type="reset" value="reset" id="resetbutton" />
 </div>
 </form>
