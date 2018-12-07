@@ -50,4 +50,3 @@ function deletewishlist(){
 }
 </script>
 </body>
-</body>
