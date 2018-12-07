@@ -14,13 +14,6 @@ include_once "headband.html";
     <div class="form-group">
       <ul id = "wl"></ul>
       <label for="wishlist">Add your wish</label>
-      <body>
-   <div class="container">
-  <h2>Wishlist</h2>
-  <form>
-    <div class="form-group">
-      <ul id = "wl"></ul>
-      <label for="wishlist">Add your wish</label>
       <input type=text id="wishlist"></input>
       <button onClick="displaywishlist()"type = "button" class = "btn btn-default">Add</button>
       <button onClick="deletewishlist()"type = "button" class = "btn btn-default">Delete</button>
