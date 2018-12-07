@@ -14,8 +14,16 @@ include_once "headband.html";
     <div class="form-group">
       <ul id = "wl"></ul>
       <label for="wishlist">Add your wish</label>
-      <textarea class="form-control" rows="3" id="wishlist"></textarea>
+      <body>
+   <div class="container">
+  <h2>Wishlist</h2>
+  <form>
+    <div class="form-group">
+      <ul id = "wl"></ul>
+      <label for="wishlist">Add your wish</label>
+      <input type=text id="wishlist"></input>
       <button onClick="displaywishlist()"type = "button" class = "btn btn-default">Add</button>
+      <button onClick="deletewishlist()"type = "button" class = "btn btn-default">Delete</button>
     </div>
   </form>
 </div>
@@ -24,14 +32,22 @@ include_once "headband.html";
 
 var wishlist_ = []
 function displaywishlist() {
-    var x = document.getElementById("wishlist").value;
-    wishlist_.push(x);
-
     var ul = document.getElementById("wl");
+    var input = document.getElementById("wishlist");
     var li = document.createElement("li");
-    li.appendChild(document.createTextNode(x));
+    li.setAttribute('id',input.value);
+    li.appendChild(document.createTextNode(input.value));
     ul.appendChild(li);
 
+
+}
+
+function deletewishlist(){
+	var ul = document.getElementById("wl");
+    var temp = document.getElementById("wishlist");
+    var item = document.getElementById(temp.value);
+    ul.removeChild(item);
 }
 </script>
+</body>
 </body>
