@@ -20,6 +20,7 @@ if (isset($_GET['action'])) {
         require_once ('controllers/ShoppingListController.php');
     }
     elseif ($_GET['action'] == 'wish_list') {
+        require_once ('models/wish.php');
         require_once ('controllers/WishListController.php');
     }
     elseif ($_GET['action'] == 'timer') {
