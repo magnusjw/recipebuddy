@@ -8,19 +8,20 @@
 include_once "headband.html";
 ?>
 <body>
+<form action="index?action=wish_list"  method="post">
    <div class="container">
   <h2>Wishlist</h2>
-  <form>
+
     <div class="form-group">
       <ul id = "wl"></ul>
       <label for="wishlist">Add your wish</label>
-      <input type=text id="wishlist"></input>
-      <button onClick="displaywishlist()"type = "button" class = "btn btn-default">Add</button>
-      <button onClick="deletewishlist()"type = "button" class = "btn btn-default">Delete</button>
+      <input type=text class = "form-control" id="wishlist" name="wishlist"></input>
+      <button  onClick="displaywishlist()" type = "button" class = "btn btn-default" >Add</button>
+        <button type = "submit" class = "btn btn-primary" name = "saveWish">Save</button>
     </div>
-  </form>
-</div>
 
+</div>
+</form>
 <script>
 
 var wishlist_ = []
@@ -35,11 +36,13 @@ function displaywishlist() {
 
 }
 
-function deletewishlist(){
+/*function deletewishlist(){
 	var ul = document.getElementById("wl");
     var temp = document.getElementById("wishlist");
     var item = document.getElementById(temp.value);
     ul.removeChild(item);
-}
+          <button onClick="deletewishlist()"type = "button" class = "btn btn-default">Delete</button>
+
+}*/
 </script>
 </body>
