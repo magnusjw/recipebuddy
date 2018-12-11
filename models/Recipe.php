@@ -43,5 +43,79 @@ class Recipe
         $this->pictures = $pictures;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDifficulty()
+    {
+        return $this->difficulty;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @return array
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSteps()
+    {
+        return $this->steps;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+
+
 
 }

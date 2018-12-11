@@ -6,7 +6,7 @@
  * Date: 07/12/2018
  * Time: 11:21
  */
-class Picture
+class MPicture
 {
     private $id;
     private $name;

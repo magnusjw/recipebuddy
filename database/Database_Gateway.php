@@ -135,20 +135,20 @@ class Database_Gateway
 
     public function insertNewRecipe($idUser,$recipe){
         $conn = self::dbConnection();
-        $query = sprintf('INSERT INTO recipe(name,description,difficulty,time,idUser) VALUES("%s","%s",%s,%s,%s);',$recipe->getName(),$recipe->getDescription(),$recipe->getdifficulty(),$recipe->getTime(),$idUser);
-        echo $query;
+        $query = sprintf('INSERT INTO recipe(name,description,difficulty,time,idUser) VALUES("%s","%s",%s,"%s",%s);',$recipe->getName(),$recipe->getDescription(),$recipe->getdifficulty(),$recipe->getTime(),$idUser);
         mysqli_query($conn, $query);
         $idRecipe = $conn->insert_id;
-        /*
-        $query = sprintf('INSERT INTO picture(name,path) VALUES(%s,%s);',$recipe->getName(),$recipe->getPictures()[0]);
+
+        $query = sprintf('INSERT INTO picture(name,path) VALUES("%s","%s");',$recipe->getName(),$recipe->getPictures()[0]);
         mysqli_query($conn, $query);
         $idPicture = $conn->insert_id;
 
-        $query = sprintf('INSERT INTO recipe_pictures(idRecipe,idPicture,date) VALUES(%s,%s,GETDATE());',$idRecipe,$idPicture);
+        $query = sprintf('INSERT INTO recipe_pictures(idRecipe,idPicture,date) VALUES(%s,%s,NOW());',$idRecipe,$idPicture);
+        echo $query;
         mysqli_query($conn, $query);
 
         for($i=0;$i<count($recipe->getSteps());$i++){
-            $query = sprintf('INSERT INTO step(name,description,idRecipe) VALUES(%s,%s,%s);',$recipe->getSteps()[$i]->getName(),$recipe->getSteps()[$i]->getDescription(),$idRecipe);
+            $query = sprintf('INSERT INTO step(name,description,idRecipe) VALUES("%s","%s",%s);',$recipe->getSteps()[$i]->getName(),$recipe->getSteps()[$i]->getDescription(),$idRecipe);
             mysqli_query($conn, $query);
         }
 
@@ -156,10 +156,10 @@ class Database_Gateway
         mysqli_query($conn, $query);
 
         for($i=0;$i<count($recipe->getIngredients());$i++){
-            $query = sprintf('INSERT INTO recipe_ingredient(idRecipe,idIngredient,quantity) VALUES(%s,%s,%s);',$idRecipe,$recipe->getIngredients()[$i]->getId(),$recipe->getIngredients()[$i]->getQuantity());
+            $query = sprintf('INSERT INTO recipe_ingredients(idRecipe,idIngredient,quantity) VALUES(%s,%s,%s);',$idRecipe,$recipe->getIngredients()[$i]->getId(),$recipe->getIngredients()[$i]->getQuantity());
             mysqli_query($conn, $query);
         }
-        */
+
         $conn->close();
     }
 

@@ -15,11 +15,13 @@ if(isset($_GET)){
         }
     }
     if($_GET['func'] == 'add_ingredient'){
-        if(isset($_REQUEST["term"]) && isset($_REQUEST["iduser"])){
+        if(isset($_REQUEST["term"])){
             $result = Database_Gateway::getInstance()->getIngredientByName($_REQUEST["term"]);
             if($result->num_rows > 0){
                 $row = $result->fetch_assoc();
-                Database_Gateway::getInstance()->addIngredientToUser($_REQUEST["iduser"],$row["id"],1);
+                if(isset($_REQUEST["iduser"])){
+                    Database_Gateway::getInstance()->addIngredientToUser($_REQUEST["iduser"],$row["id"],1);
+                }
                 echo '<div class="ingredient row">';
                 echo '<input type="hidden" name="ingredientId[]" value="'.$row["id"].'">';
                 echo '<div class="col-md-1">';

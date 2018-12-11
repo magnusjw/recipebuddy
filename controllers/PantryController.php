@@ -12,6 +12,7 @@ if(isset($_POST)) {
     if(isset($_POST["add_ingredient"])){
         $ingredient_name = $_POST["ingredientName"];
         $ingredient_category = $_POST["category"];
+
         $target_dir = "resources/ingredients_pictures/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
@@ -19,7 +20,7 @@ if(isset($_POST)) {
         // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            //echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
             echo "File is not an image.";

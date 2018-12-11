@@ -28,5 +28,12 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'account') {
         require_once ('controllers/AccountController.php');
     }
+    elseif($_GET['action'] == 'display_recipe'){
+        require_once ('models/Recipe.php');
+        require_once ('models/Ingredient.php');
+        require_once ('models/Step.php');
+        require_once ('models/MPicture.php');
+        require_once ('controllers/DisplayRecipeController.php');
+    }
 }
 ?>

@@ -22,7 +22,7 @@ include_once "headband.html";
                         var resultDropdown = $('.search-box .result');
                         if(inputVal.length){
                             $.get("controllers/backend-search.php?func=get_results", {term: inputVal}).done(function(data){
-                                // Display the returned data in browser
+                                console.log("searching");
                                 resultDropdown.html(data);
                             });
                         } else{
@@ -59,6 +59,7 @@ include_once "headband.html";
                     <div class="result"></div>
                 </div>
             </div>
+
             <div class="col-md-3">
                 <form class="form-inline form-control-lg">
                     <Button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Ingredient</Button>
