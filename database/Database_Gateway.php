@@ -162,6 +162,66 @@ class Database_Gateway
 
         $conn->close();
     }
+
+    public function getRecipe($idRecipe){
+        $conn = self::dbConnection();
+        $query = sprintf('SELECT * FROM recipe WHERE id = %s;',$idRecipe);
+        $result = mysqli_query($conn, $query);
+        $row = $result->fetch_assoc();
+
+        $id = $row["id"];
+        $name = $row["name"];
+        $description = $row["description"];
+        $difficulty = $row["difficulty"];
+        $time = $row["time"];
+
+        $ingredients = [];
+        $query = sprintf('SELECT ingredient.id,ingredient.name,ingredient.category,recipe_ingredients.quantity,picture.path FROM recipe_ingredients,ingredient,picture WHERE idRecipe = %s AND recipe_ingredients.idIngredient = ingredient.id AND ingredient.idPicture = picture.id;',$idRecipe);
+        $result = mysqli_query($conn, $query);
+        while($row = $result->fetch_assoc()){
+            array_push($ingredients,new Ingredient($row["id"],$row["name"],$row["category"],$row["path"],$row["quantity"]));
+        }
+
+        $steps = [];
+        $query = sprintf('SELECT * FROM step WHERE idRecipe = %s;',$idRecipe);
+        $result = mysqli_query($conn, $query);
+        while($row = $result->fetch_assoc()){
+            array_push($steps,new Step($row["id"],$row["name"],$row["description"]));
+        }
+
+        $rating = [];
+        $query = sprintf('SELECT * FROM rating WHERE idRecipe = %s;',$idRecipe);
+        $result = mysqli_query($conn, $query);
+        while($row = $result->fetch_assoc()){
+            array_push($rating,$row["rating"]);
+        }
+
+        $pictures = [];
+        $query = sprintf('SELECT * FROM recipe_pictures,picture WHERE recipe_pictures.idRecipe = %s AND recipe_pictures.idPicture = picture.id;',$idRecipe);
+        $result = mysqli_query($conn, $query);
+        while($row = $result->fetch_assoc()){
+            array_push($pictures,$row["path"]);
+        }
+
+        $recipe = new Recipe($id,$name,$description,$difficulty,$time,$rating,$ingredients,$steps,$pictures);
+        $conn->close();
+
+        return $recipe;
+    }
+
+    public function getRecipesList($idUser){
+        $conn = self::dbConnection();
+        $query = sprintf('SELECT id FROM recipe WHERE idUser = %s;',$idUser);
+        $result = mysqli_query($conn, $query);
+        $recipesList = [];
+        while($row = $result->fetch_assoc()){
+            $idRecipe = $row["id"];
+            array_push($recipesList,Database_Gateway::getInstance()->getRecipe($idRecipe));
+        }
+        $conn->close();
+        return $recipesList;
+    }
+
     public function addWishlist($idUser,$title,$wish){
         $conn = self::dbConnection();
         $query = sprintf('INSERT INTO wish(title,description,idUser) VALUES("%s","%s",%s);', $title,$wish, $idUser);
@@ -169,6 +229,7 @@ class Database_Gateway
         mysqli_query($conn, $query);
         $conn->close();
     }
+
     public function getWishlist($userId){
         $conn = self::dbConnection();
 
@@ -178,6 +239,7 @@ class Database_Gateway
 
         return $results;
     }
+
     public function deleteWish($idUser,$id){
         $conn = self::dbConnection();
         $query = sprintf("DELETE FROM wish WHERE idUser = %s AND idWishlist = %s;",$idUser,$id);

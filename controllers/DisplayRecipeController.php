@@ -7,7 +7,7 @@
  */
 $idUser = 1;
 
-if(isset($_POST)){
+if(isset($_POST["create_recipe"])){
     $time = $_POST["inputHour"].":".$_POST["inputMinute"].":00";
     $rating = [];
     $ingredients = [];
@@ -76,6 +76,9 @@ if(isset($_POST)){
     //echo var_dump($recipe);
     //Insert the recipe into the database
     Database_Gateway::getInstance()->insertNewRecipe($idUser,$recipe);
+}
+elseif (isset($_GET["idRecipe"])){
+    $recipe = Database_Gateway::getInstance()->getRecipe($_GET["idRecipe"]);
 }
 
 

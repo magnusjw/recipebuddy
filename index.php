@@ -7,6 +7,9 @@
 if (isset($_GET['action'])) {
     require_once('database/Database_Gateway.php');
     if ($_GET['action'] == 'homepage') {
+        require_once ('models/Recipe.php');
+        require_once ('models/Ingredient.php');
+        require_once ('models/Step.php');
         require_once('controllers/HomePageController.php');
     }
     elseif ($_GET['action'] == 'create_recipe') {
@@ -33,7 +36,6 @@ if (isset($_GET['action'])) {
         require_once ('models/Recipe.php');
         require_once ('models/Ingredient.php');
         require_once ('models/Step.php');
-        require_once ('models/MPicture.php');
         require_once ('controllers/DisplayRecipeController.php');
     }
 }

@@ -131,7 +131,7 @@ include_once "headband.html";
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Create Recipe !</button>
+    <button type="submit" class="btn btn-primary" name="create_recipe">Create Recipe !</button>
     <button type="reset" class="btn btn-primary">Cancel</button>
 </form>
 
