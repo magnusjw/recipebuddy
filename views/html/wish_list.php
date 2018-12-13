@@ -7,23 +7,45 @@
  */
 include_once "headband.html";
 ?>
+
+
+<link rel="stylesheet" href="views/css/wishlist_stylesheet.css">
 <body>
 <form action="index?action=wish_list"  method="post">
    <div class="container">
-  <h2>Wishlist</h2>
+       <h2>Wishlist</h2>
 
-    <div class="form-group">
-      <ul id = "wl"></ul>
-      <label for="wishlist">Add your wish</label>
-      <input type=text class = "form-control" id="wishlist" name="wishlist"></input>
-      <button  onClick="displaywishlist()" type = "button" class = "btn btn-default" >Add</button>
-        <button type = "submit" class = "btn btn-primary" name = "saveWish">Save</button>
-    </div>
+       <?php
 
-</div>
+           foreach ($wishlist as $wish){
+               echo '<div class = "panel panel-default" >';
+               echo '<div class = "panel-body"> ';
+               echo '<p type = text name = "onewish">'.$wish->getDescription().'</p>';
+               echo '<button onClick = "display()" type = "button" class = "btn btn-warning" name = "deleteWish">X</button>';
+               echo '</div>';
+
+               echo '</div>';
+
+           }
+
+        ?>
+
+       <label for="wishlist">Add your wish</label>
+       <input type="text" class = "form-control" id="wishlist" name="wishlist"></input>
+       <!-- <button  onClick="displaywishlist()" type = "button" class = "btn btn-default" >Add</button>-->
+       <button type = "submit" class = "btn btn-primary" name = "saveWish">Add</button>
+   </div>
 </form>
-<script>
 
+<script>
+    function display(){
+        var ul = document.getElementById("onewish");
+        console.log(ul);
+        var li = docuement.createElement("li");
+        li.setAttribute('id',ul.value)
+        li.appendChild(document.createTextNode(ul.value));
+    }
+/*
 var wishlist_ = []
 function displaywishlist() {
     var ul = document.getElementById("wl");
@@ -36,7 +58,7 @@ function displaywishlist() {
 
 }
 
-/*function deletewishlist(){
+function deletewishlist(){
 	var ul = document.getElementById("wl");
     var temp = document.getElementById("wishlist");
     var item = document.getElementById(temp.value);
