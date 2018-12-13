@@ -53,7 +53,7 @@ include_once "headband.html";
                 <div class="form-group row">
                     <label for="newpass" class="col-4 col-form-label">New Password</label>
                     <div class="col-8">
-                        <input id="newpass" name="newpass" placeholder="New Password" type="password">
+                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="password">
                         <input type="checkbox" onclick="showpsw()">Show Password</input>
                     </div>
                 </div>
