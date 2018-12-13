@@ -21,7 +21,7 @@ include_once "headband.html";
                echo '<div class = "panel panel-default" >';
                echo '<div class = "panel-body"> ';
                echo '<p type = text name = "onewish">'.$wish->getDescription().'</p>';
-               echo '<button onClick = "display()" type = "button" class = "btn btn-warning" name = "deleteWish">X</button>';
+               echo '<button type = "submit" class = "btn btn-warning" name = "deleteWish">X</button>';
                echo '</div>';
 
                echo '</div>';
