@@ -225,23 +225,24 @@ class Database_Gateway
     public function addWishlist($idUser,$title,$wish){
         $conn = self::dbConnection();
         $query = sprintf('INSERT INTO wish(title,description,idUser) VALUES("%s","%s",%s);', $title,$wish, $idUser);
-        print ($query);
         mysqli_query($conn, $query);
         $conn->close();
     }
-
     public function getWishlist($userId){
         $conn = self::dbConnection();
 
         $query = sprintf('SELECT * FROM wish WHERE idUser = %s;',$userId);
+
         $results = mysqli_query($conn, $query);
         $conn->close();
 
         return $results;
     }
-
     public function deleteWish($idUser,$id){
         $conn = self::dbConnection();
+        print ($idUser);
+        print ("and");
+        print($id);
         $query = sprintf("DELETE FROM wish WHERE idUser = %s AND idWishlist = %s;",$idUser,$id);
         mysqli_query($conn, $query);
         $conn->close();
