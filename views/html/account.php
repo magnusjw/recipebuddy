@@ -28,7 +28,7 @@ include_once "headband.html";
                 <div class="form-group row">
                     <label for="username" class="col-4 col-form-label">User Name</label>
                     <div class="col-8">
-                        <input id="username" name="username" placeholder="Username" class="form-control here" type="text">
+                        <input id="username" name="username" placeholder="Username" class="form-control here" max="12" type="text">
                     </div>
                 </div>
 

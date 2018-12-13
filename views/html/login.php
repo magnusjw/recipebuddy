@@ -15,7 +15,7 @@
                 <div class="form-group row">
                     <label for="username" class="col-4 col-form-label">User Name</label>
                     <div class="col-8">
-                        <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                        <input id="username" name="username" placeholder="Username" class="form-control here" maxlength="12" required="required" type="text">
                     </div>
                 </div>
                 <div class="form-group row">
