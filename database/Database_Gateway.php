@@ -25,10 +25,10 @@ class Database_Gateway
 
     private function dbConnection(){
         //Connect to the database
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "recipe_buddy";
+        $servername = "mysql.clarksonmsda.org";
+        $username = "croisia";
+        $password = "croisille91";
+        $dbname = "croisia";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password,$dbname);
@@ -59,7 +59,8 @@ class Database_Gateway
         //Attach an ingredient to a user with a quantity
         $conn = self::dbConnection();
         //Insert a new ingredient in the database
-        $query = sprintf("INSERT INTO `pantry`(`idUser`,`idIngredient`,`quantity`) VALUES('%s','%s','%s')",$userId, $ingredientId,$quantity);
+        $query = sprintf("INSERT INTO pantry(idUser,idIngredient,quantity) VALUES(%s,%s,%s);",$userId, $ingredientId,$quantity);
+        echo $query;
         mysqli_query($conn, $query);
         $conn->close();
     }
