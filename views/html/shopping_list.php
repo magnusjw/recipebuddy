@@ -7,5 +7,5 @@
 include_once "headband.html";
 ?>
 <body>
-    <h1>Welcome on the shopping list page</h1>
+    <h1>Shopping List</h1>
 </body>

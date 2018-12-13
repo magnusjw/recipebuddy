@@ -7,7 +7,7 @@
 include_once "headband.html";
 ?>
 <body>
-    <h1>Welcome on homepage</h1>
+    <h1>Homepage</h1>
     <?php foreach ($recipesList as $recipe){ ?>
         <div class="recipe-vignette row">
             <div class="col-md-3">
