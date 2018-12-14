@@ -15,13 +15,13 @@
                 <div class="form-group row">
                     <label for="username" class="col-4 col-form-label">User Name</label>
                     <div class="col-8">
-                        <input id="username" name="username" placeholder="Username" class="form-control here" maxlength="12" required="required" type="text">
+                        <input id="username" name="username" placeholder="Username" class="form-control here" type="text" pattern=".{5,12}" required title="5 to 12 characters">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pass" class="col-4 col-form-label">Password</label>
                     <div class="col-8">
-                        <input id="pass" name="pass" placeholder="Password" class="form-control here" type="Password">
+                        <input id="pass" name="pass" placeholder="Password" class="form-control here" type="Password" required="required">
                     </div>
                 </div>
                 <div class="form-group row">

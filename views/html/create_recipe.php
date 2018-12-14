@@ -122,6 +122,7 @@ include_once "headband.html";
             </div>
         </div>
     </div>
+    <br>
     <button type="button" class="btn btn-default" id="addStep">Add Step</button>
 
     <div class="form-group row">
