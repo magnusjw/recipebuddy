@@ -12,7 +12,7 @@ if(isset($_POST["login"])){
     if($id!=-1){
         setcookie("idUser",$id,time() + (1800 * 30), "/");
         //Replace by : https://webspace.clarkson.edu/projects/JTAQ/public_html/index?action=homepage
-        header('Location: http://localhost/recipebuddy/index?action=homepage');
+        header('Location: https://webspace.clarkson.edu/projects/JTAQ/public_html/index?action=homepage');
         exit();
     }
     else{

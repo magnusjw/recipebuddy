@@ -36,7 +36,7 @@ if(isset($_COOKIE['idUser']) and $_COOKIE['idUser'] != NULL){
         elseif ($_GET['action'] == 'logout') {
             setcookie('idUser', NULL, time() - 3600,"/");
             //Replace by : https://webspace.clarkson.edu/projects/JTAQ/public_html/index
-            header('Location: http://localhost/recipebuddy/index.php');
+            header('Location: https://webspace.clarkson.edu/projects/JTAQ/public_html/index');
             exit();
         }
         elseif($_GET['action'] == 'display_recipe'){
@@ -48,7 +48,7 @@ if(isset($_COOKIE['idUser']) and $_COOKIE['idUser'] != NULL){
     }
     else{
         //Replace by : https://webspace.clarkson.edu/projects/JTAQ/public_html/index?action=homepage
-        header('Location: http://localhost/recipebuddy/index?action=homepage');
+        header('https://webspace.clarkson.edu/projects/JTAQ/public_html/index?action=homepage');
         exit();
     }
 }else{
