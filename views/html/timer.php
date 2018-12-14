@@ -99,6 +99,8 @@ var jsalarm={
 
 <body>
 
+<h1>Timer</h1>
+
 <form action="" method="">
 <div id="jsalarmclock">
 <div><div class="leftcolumn">Current Time:</div> <span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>

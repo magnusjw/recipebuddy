@@ -13,7 +13,7 @@ include_once "headband.html";
 <body>
 <form action="index?action=wish_list"  method="post">
    <div class="container">
-       <h2>Wishlist</h2>
+       <h1>Wishlist</h1>
 
        <?php
 
