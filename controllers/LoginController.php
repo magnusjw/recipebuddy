@@ -7,8 +7,11 @@
  */
 if(isset($_POST["login"])){
     //Check if the user is in the database
+    echo 'Trying to login';
     $id = Database_Gateway::getInstance()->checkUser($_POST['username'],$_POST['pass']);
-    if($id=!-1){
+    echo $id;
+    if($id!=-1){
+        echo 'login succeed';
         setcookie("idUser",$id,time() + (1800 * 30), "/");
         //Replace by : https://webspace.clarkson.edu/projects/JTAQ/public_html/index?action=homepage
         header('Location: http://localhost/recipebuddy/index?action=homepage');

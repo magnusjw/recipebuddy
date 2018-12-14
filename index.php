@@ -4,7 +4,7 @@
  * Date: 10/11/2018
  * Time: 14:19
  */
-if(isset($_COOKIE['idUser'])){
+if(isset($_COOKIE['idUser']) and $_COOKIE['idUser'] != NULL){
     require_once('database/Database_Gateway.php');
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'homepage') {
@@ -33,9 +33,10 @@ if(isset($_COOKIE['idUser'])){
         elseif ($_GET['action'] == 'account') {
             require_once ('controllers/AccountController.php');
         }
-        elseif ($_GET['action'] == 'logout') {  
-            setcookie("idUser", "", time() - 3600);
-            header('Location: http://localhost/recipebuddy/index');
+        elseif ($_GET['action'] == 'logout') {
+            setcookie('idUser', NULL, time() - 3600);
+            //Replace by : https://webspace.clarkson.edu/projects/JTAQ/public_html/index
+            header('Location: http://localhost/recipebuddy/index.php');
             exit();
         }
         elseif($_GET['action'] == 'display_recipe'){
