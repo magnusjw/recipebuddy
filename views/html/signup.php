@@ -24,10 +24,9 @@
                 <div class="form-group row">
                     <label for="username" class="col-4 col-form-label">User Name</label>
                     <div class="col-8">
-                        <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                        <input id="username" name="username" class="form-control here" type="text" pattern=".{5,12}" required title="5 to 12 characters">
                     </div>
                 </div>
-
                 <div class="form-group row">
                     <label for="firstname" class="col-4 col-form-label">First Name</label>
                     <div class="col-8">
@@ -43,13 +42,19 @@
                 <div class="form-group row">
                     <label for="email" class="col-4 col-form-label">Email</label>
                     <div class="col-8">
-                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="email">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="pass" class="col-4 col-form-label">Password</label>
                     <div class="col-8">
-                        <input id="pass" name="pass" placeholder="Password" class="form-control here" required="required" type="text">
+                        <input id="pass" name="pass" placeholder="Password" class="form-control here" type="password" pattern=".{5,12}" required title="5 to 12 characters">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="conpass" class="col-4 col-form-label">Confirm Password</label>
+                    <div class="col-8">
+                        <input id="conpass" name="conpass" placeholder="Confirm Password" class="form-control here" type="password" pattern=".{5,12}" required title="Must match the previous entry">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -58,3 +63,10 @@
                     </div>
                 </div>
 </body>
+
+/*
+if ($_POST['pass']!= $_POST['pass2'])
+{
+echo("Oops! Password did not match! Try again. ");
+}
+*/

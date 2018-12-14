@@ -11,7 +11,7 @@ include_once "headband.html";
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <h2>My Pantry</h2>
+                <h1>My Pantry</h1>
             </div>
             <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
             <script type="text/javascript">

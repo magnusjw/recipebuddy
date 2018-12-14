@@ -241,10 +241,12 @@ class Database_Gateway
     }
     public function deleteWish($idUser,$id){
         $conn = self::dbConnection();
+        print ("IdUser  is " );
         print ($idUser);
-        print ("and");
-        print($id);
-        $query = sprintf("DELETE FROM wish WHERE idUser = %s AND idWishlist = %s;",$idUser,$id);
+        print (" and ");
+        print(" IdWishlist is ");
+        print ($id);
+        $query = sprintf("DELETE FROM wish WHERE idUser = %s AND id = %s;",$idUser,$id);
         mysqli_query($conn, $query);
         $conn->close();
     }

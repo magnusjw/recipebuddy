@@ -18,7 +18,6 @@ include_once "headband.html";
     }
 </script>
 
-
 <body>
 <h1>Account</h1>
 <div class="container">
@@ -28,7 +27,7 @@ include_once "headband.html";
                 <div class="form-group row">
                     <label for="username" class="col-4 col-form-label">User Name</label>
                     <div class="col-8">
-                        <input id="username" name="username" placeholder="Username" class="form-control here" type="text">
+                        <input id="username" name="username" placeholder="Username" class="form-control here" type="text" pattern=".{5,12}" required title="5 to 12 characters">
                     </div>
                 </div>
 
@@ -47,13 +46,13 @@ include_once "headband.html";
                 <div class="form-group row">
                     <label for="email" class="col-4 col-form-label">Email</label>
                     <div class="col-8">
-                        <input id="email" name="email" placeholder="Email" class="form-control here" type="text">
+                        <input id="email" name="email" placeholder="Email" class="form-control here" type="email" pattern=".{10,24}" required title="10 to 24 characters">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="newpass" class="col-4 col-form-label">New Password</label>
                     <div class="col-8">
-                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="password">
+                        <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="password" pattern=".{5,12}" required title="5 to 12 characters">
                         <input type="checkbox" onclick="showpsw()">Show Password</input>
                     </div>
                 </div>
