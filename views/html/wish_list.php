@@ -16,21 +16,24 @@ include_once "headband.html";
        <h2>Wishlist</h2>
 
        <?php
+            $num = 1;
 
            foreach ($wishlist as $wish){
+
                echo '<div class = "panel panel-default" >';
                echo '<div class = "panel-body"> ';
-               echo '<p type = text name = "onewish">'.$wish->getDescription().'</p>';
-               echo '<button type = "submit" class = "btn btn-warning" name = "deleteWish">X</button>';
+               echo '<input readonly type = text class = "form-control" name = "'."onewish".$num.'" value = "'.$wish->getDescription().'">';
+               $delete_wish_num = "deletewish".$num;
+               $delete_button = "X";
+               echo '<button type = "submit" class = "btn btn-primary" name = "'.$delete_wish_num.'">'.$delete_button.'</button>';
                echo '</div>';
-
                echo '</div>';
-
+               $num++;
            }
 
         ?>
 
-       <label for="wishlist">Add your wish</label>
+       <label for="wishlist">Add Your Wish</label>
        <input type="text" class = "form-control" id="wishlist" name="wishlist"></input>
        <!-- <button  onClick="displaywishlist()" type = "button" class = "btn btn-default" >Add</button>-->
        <button type = "submit" class = "btn btn-primary" name = "saveWish">Add</button>
@@ -38,13 +41,7 @@ include_once "headband.html";
 </form>
 
 <script>
-    function display(){
-        var ul = document.getElementById("onewish");
-        console.log(ul);
-        var li = docuement.createElement("li");
-        li.setAttribute('id',ul.value)
-        li.appendChild(document.createTextNode(ul.value));
-    }
+
 /*
 var wishlist_ = []
 function displaywishlist() {
