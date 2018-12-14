@@ -8,7 +8,6 @@
 if(isset($_POST["login"])){
     //Check if the user is in the database
     $id = Database_Gateway::getInstance()->checkUser($_POST['username'],$_POST['pass']);
-    echo $id;
     if($id!=-1){
         setcookie("idUser",$id,time() + (1800 * 30), "/");
         //Replace by : https://webspace.clarkson.edu/projects/JTAQ/public_html/index?action=homepage
