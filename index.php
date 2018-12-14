@@ -21,6 +21,7 @@ if(isset($_COOKIE['idUser']) and $_COOKIE['idUser'] != NULL){
             require_once ('controllers/PantryController.php');
         }
         elseif ($_GET['action'] == 'shopping_list') {
+            require_once ('models/Ingredient.php');
             require_once ('controllers/ShoppingListController.php');
         }
         elseif ($_GET['action'] == 'wish_list') {
