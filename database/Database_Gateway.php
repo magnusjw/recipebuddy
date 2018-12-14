@@ -251,5 +251,23 @@ class Database_Gateway
         $conn->close();
     }
 
+    public function insertuser($userName,$lastName,$firstName,$password,$email){
+        $conn = self::dbConnection();
+        $query = sprintf('INSERT INTO user(username,lastname,firstname,password,email) VALUES("%s","%s","%s","%s","%s");',$userName,$lastName,$firstName,$password,$email);
+        mysqli_query($conn, $query);
+        $conn->close();
+    }
 
+    public function checkUser($userName,$password){
+        $id = -1;
+        $conn = self::dbConnection();
+        $query = sprintf('SELECT id FROM user WHERE username = "%s" AND password = "%s";',$userName,$password);
+        $result = mysqli_query($conn, $query);
+        if($result->num_rows == 1){
+            $row = $result->fetch_assoc();
+            $id = $row['id'];
+        }
+        $conn->close();
+        return $id;
+    }
 }

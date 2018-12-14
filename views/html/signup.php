@@ -59,14 +59,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="offset-4 col-8">
-                        <button name="submit" type="submit" class="btn btn-primary">Create Account</button>
+                        <button name="signup" type="submit" class="btn btn-primary">Create Account</button>
                     </div>
                 </div>
 </body>
-
-/*
-if ($_POST['pass']!= $_POST['pass2'])
-{
-echo("Oops! Password did not match! Try again. ");
-}
-*/

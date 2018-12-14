@@ -4,7 +4,7 @@
  * Date: 18/11/2018
  * Time: 16:37
  */
-$user_id = 1;
+$user_id = $_COOKIE['idUser'];
 //echo var_dump($_POST);
 //$global_num = 1;
 if(isset($_POST)){

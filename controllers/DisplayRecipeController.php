@@ -5,7 +5,7 @@
  * Date: 06/12/2018
  * Time: 19:43
  */
-$idUser = 1;
+$idUser = $_COOKIE['idUser'];
 
 if(isset($_POST["create_recipe"])){
     $time = $_POST["inputHour"].":".$_POST["inputMinute"].":00";

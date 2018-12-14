@@ -4,7 +4,7 @@
  * Date: 11/11/2018
  * Time: 14:13
  */
-$idUser = 1;
+$idUser = $_COOKIE['idUser'];
 
 $recipesList = Database_Gateway::getInstance()->getRecipesList($idUser);
 

@@ -28,7 +28,7 @@
                 <div class="form-group row">
                     <div class="offset-4 col-8">
                         <button name="login" type="submit" class="btn btn-primary">Login</button>
-                        <button name="signup" href="submit" class="btn btn-secondary">Don't have an account? Sign up!</button>
+                        <button name="gosignup" href="submit" class="btn btn-secondary">Don't have an account? Sign up!</button>
                     </div>
                 </div>
 </body>
