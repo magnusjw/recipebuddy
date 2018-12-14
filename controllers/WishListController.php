@@ -27,9 +27,9 @@ if(isset($_POST)){
             if (isset($_POST[$newDeleteWish])) {
                 $tmp_db_wishlist2 = Database_Gateway::getInstance()->getWishlist($user_id);
                 $wishlist_id = 0;
-                print ("Wish: ");
-                print($_POST["onewish".strval($num)]);
-                print (" ");
+              //  print ("Wish: ");
+              //  print($_POST["onewish".strval($num)]);
+             //   print (" ");
 
                 if ($tmp_db_wishlist2->num_rows > 0) {
                     while ($row = $tmp_db_wishlist2->fetch_assoc()) {

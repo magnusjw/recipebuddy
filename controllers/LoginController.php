@@ -15,6 +15,9 @@ if(isset($_POST["login"])){
         exit();
     }
     else{
+        echo '<script language="javascript">';
+        echo 'alert("Wrong password !")';
+        echo '</script>';
         require_once ('views/html/login.php');
     }
 }

@@ -60,7 +60,16 @@ class Database_Gateway
         $conn = self::dbConnection();
         //Insert a new ingredient in the database
         $query = sprintf("INSERT INTO pantry(idUser,idIngredient,quantity) VALUES(%s,%s,%s);",$userId, $ingredientId,$quantity);
-        echo $query;
+       // echo $query;
+        mysqli_query($conn, $query);
+        $conn->close();
+    }
+    public function addIngredientToUserShoppingList($userId,$ingredientId,$quantity){
+        //Attach an ingredient to a user with a quantity
+        $conn = self::dbConnection();
+        //Insert a new ingredient in the database
+        $query = sprintf("INSERT INTO shopping_list_ingredients(idUser,idIngredient,quantity) VALUES(%s,%s,%s);",$userId, $ingredientId,$quantity);
+        // echo $query;
         mysqli_query($conn, $query);
         $conn->close();
     }
@@ -86,6 +95,28 @@ class Database_Gateway
         }
         $conn->close();
     }
+    public function getShoppinglist($userId){
+        $conn = self::dbConnection();
+        $query = sprintf("SELECT * FROM shopping_list_ingredients,ingredient,picture WHERE shopping_list_ingredients.idUser = %s AND ingredient.idPicture = picture.id AND shopping_list_ingredients.idIngredient = ingredient.id;",$userId);
+        $results = mysqli_query($conn, $query);
+        $conn->close();
+        return $results;
+    }
+
+    public function updateShoppinglist($userId,$arrayIngredient,$arrayQuantity){
+        $conn = self::dbConnection();
+        for ($i = 0; $i < count($arrayIngredient); $i++) {
+            if($arrayQuantity[$i] > 0){
+                $query = sprintf("UPDATE shopping_list_ingredients SET quantity= %s WHERE idUser = %s AND idIngredient = %s;",$arrayQuantity[$i],$userId,$arrayIngredient[$i]);
+            }
+            else{
+                $query = sprintf("DELETE FROM shopping_list_ingredients WHERE idUser = %s AND idIngredient = %s;",$userId,$arrayIngredient[$i]);
+            }
+            mysqli_query($conn, $query);
+        }
+        $conn->close();
+    }
+
 
     public function searchIngredient($ingredient){
         $conn = self::dbConnection();
@@ -145,7 +176,7 @@ class Database_Gateway
         $idPicture = $conn->insert_id;
 
         $query = sprintf('INSERT INTO recipe_pictures(idRecipe,idPicture,date) VALUES(%s,%s,NOW());',$idRecipe,$idPicture);
-        echo $query;
+        //echo $query;
         mysqli_query($conn, $query);
 
         for($i=0;$i<count($recipe->getSteps());$i++){
@@ -241,11 +272,6 @@ class Database_Gateway
     }
     public function deleteWish($idUser,$id){
         $conn = self::dbConnection();
-        print ("IdUser  is " );
-        print ($idUser);
-        print (" and ");
-        print(" IdWishlist is ");
-        print ($id);
         $query = sprintf("DELETE FROM wish WHERE idUser = %s AND id = %s;",$idUser,$id);
         mysqli_query($conn, $query);
         $conn->close();

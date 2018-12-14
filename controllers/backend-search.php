@@ -37,6 +37,29 @@ if(isset($_GET)){
             }
         }
     }
+    if($_GET['func'] == 'add_ingredient_to_shoppinglist'){
+        if(isset($_REQUEST["term"])){
+            $result = Database_Gateway::getInstance()->getIngredientByName($_REQUEST["term"]);
+            if($result->num_rows > 0){
+                $row = $result->fetch_assoc();
+                if(isset($_REQUEST["iduser"])){
+                    Database_Gateway::getInstance()->addIngredientToUserShoppingList($_REQUEST["iduser"],$row["id"],1);
+                }
+                echo '<div class="ingredient row">';
+                echo '<input type="hidden" name="ingredientId[]" value="'.$row["id"].'">';
+                echo '<div class="col-md-1">';
+                echo '<img name="path[]" src="'.$row["path"].'" alt="..." class="img-thumbnail" width="50" height="50">';
+                echo '</div>';
+                echo '<div class="col-md-1">';
+                echo '<p name="name[]" class="text-center">'.$row["name"].'</p>';
+                echo '</div>';
+                echo '<div class="col-md-1">';
+                echo '<input name="quantity[]" type="number" name="quantity" value="1" min="0" max="100">';
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+    }
 
 }
 
